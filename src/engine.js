@@ -374,3 +374,25 @@ function buildRisks(model, x) {
   if (x.unassigned.length) R.push({ sev: "info", title: "Müfredata yerleşmeyen dersler", body: x.unassigned.map(c => c.code).join(", ") + ": seçmeli kalemlerinin hepsi dolu. Bu dersler ortalamaya girer ama kredi saymaz." });
   return R;
 }
+
+// Bir dersten sonra sırayla gelen en uzun zorunlu ders zinciri (önkoşul ilişkisiyle), ör. MATH 106 → MATH 227 → MAN 256 → MAN 341 → MAN 406.
+export function downstreamChain(model, code) {
+  const req = model.slots.filter(s => s.code && s.kind === "req");
+  const next = c => req.filter(s => preCodes(s.preNode).has(c));
+  const memo = new Map();
+  const len = c => { if (memo.has(c)) return memo.get(c); memo.set(c, 1); const v = 1 + Math.max(0, ...next(c).map(s => len(s.code))); memo.set(c, v); return v; };
+  const chain = [code];
+  let cur = code;
+  for (;;) {
+    const n = next(cur).sort((a, b) => len(b.code) - len(a.code) || a.order - b.order)[0];
+    if (!n) break;
+    chain.push(n.code); cur = n.code;
+  }
+  return chain;
+}
+
+// Planda bir dersin hangi döneme yerleştirildiği (anahtar), yoksa null.
+export function plannedKey(plan, code) {
+  const t = plan.terms.find(t => t.picked.some(p => p.it.code === code));
+  return t ? t.k : null;
+}

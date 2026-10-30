@@ -6,30 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bilkent Mezuniyet Planlayıcısı</title>
   <meta name="description" content="Bilkent öğrencileri tarafından yapılmış bağımsız mezuniyet planlayıcı. Resmi değildir, Bilkent Üniversitesi ile bağlantısı yoktur.">
-  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/app.css">
 </head>
 <body>
-  <div class="banner" role="note">
-    Bu araç <strong>resmi değildir</strong>, Bilkent Üniversitesi ile bağlantısı yoktur.
-    Sonuçları mutlaka STARS ve danışmanınla karşılaştır.
-  </div>
-  <header class="top">
-    <span class="brand">Bilkent Mezuniyet Planlayıcısı</span>
-    <nav><a href="gizlilik.html">Gizlilik</a></nav>
-  </header>
-  <main id="app">
-    <section class="intro">
-      <h1>Mezuniyetine giden yol, dönem dönem.</h1>
-      <p>STARS transkriptini yapıştır; kalan zorunlu ve seçmelileri, W ve tekrar senaryolarını,
-         "şunları alırsam GPA'm ne olur" hesabını ve hedef döneme kadar yol haritanı gör.</p>
-      <p class="privacy-note">Notların bu tarayıcıdan dışarı çıkmaz. Sunucumuz yok, hesap yok.</p>
-    </section>
-    <div id="planner" class="planner"><p class="soon">Planlayıcı yükleniyor…</p></div>
-    <noscript><p class="err">Planlayıcı için JavaScript gerekli.</p></noscript>
-  </main>
-  <footer>
-    <a href="gizlilik.html">Gizlilik ve KVKK</a> · Resmi değildir · STARS ile karşılaştır
-  </footer>
-  <script type="module" src="src/app.js"></script>
+<div class="top">
+  <div class="stripe"></div>
+  <nav class="nav gut" aria-label="Ana menü"><div class="wrap">
+    <a class="brand" href="#pano">
+      <span class="mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4 2 9l10 5 10-5-10-5z" fill="#2C2A5F"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" stroke="#2C2A5F" stroke-width="2"/></svg></span>
+      <span><b>Bilkent Mezuniyet Planlayıcısı</b><small>Bağımsız öğrenci projesi</small></span>
+    </a>
+    <div class="tabs" id="tabs">
+      <a href="#pano">Yol haritası</a><a href="#dersler">Derslerim</a><a href="#senaryo">Senaryolar</a><a href="#gpa">GPA hesabı</a>
+    </div>
+    <div class="right"><span class="prog">MAN · 2024+ müfredatı</span><a class="avatar" href="#baslangic" title="Hedef ve ayarlar" aria-label="Hedef ve ayarlar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a></div>
+  </div></nav>
+  <div class="warn gut"><div class="wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.5" r="1.2" fill="currentColor"/></svg>
+    <span>Bağımsız öğrenci projesi, resmi değildir. Bilkent Üniversitesi ile bağlantısı yoktur. Sonuçları STARS ve danışmanınla karşılaştır.</span>
+  </div></div>
+</div>
+<main class="gut"><div class="wrap" id="app"><p class="muted">Planlayıcı yükleniyor…</p><noscript><p>Planlayıcı için JavaScript gerekli.</p></noscript></div></main>
+<footer class="site-foot gut">Notların bu tarayıcıdan dışarı çıkmaz; sunucumuz ve hesap sistemi yok. · <a href="gizlilik.html">Gizlilik ve KVKK</a> · Resmi değildir</footer>
+<nav class="mtabs" id="mtabs" aria-label="Sekmeler">
+  <a href="#pano"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Plan</a>
+  <a href="#dersler"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="m8.5 12 2.5 2.5 4.5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Derslerim</a>
+  <a href="#senaryo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4v16M6 8h8l-2 3 2 3H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Senaryo</a>
+  <a href="#gpa"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19V11M12 19V5M19 19v-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>GPA</a>
+</nav>
+<script type="module" src="src/app.js"></script>
 </body>
 </html>
